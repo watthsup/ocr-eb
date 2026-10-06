@@ -38,18 +38,26 @@ export default function Header({ catalog, catalogError }: Props) {
   const healthTitle =
     state === 'online' && health
       ? [
-          `Service: ${health.service}`,
-          `LLM: ${health.llm.provider} / ${health.llm.model} (${health.llm.enabled ? 'enabled' : 'disabled'})`,
-          `OCR engine: ${health.ocr_engine}`,
-          `Catalog: v${shortVersion(health.catalog?.version)} · ${health.catalog?.field_count ?? '?'} fields`,
-        ].join('\n')
+          health.service ? `Service: ${health.service}` : null,
+          health.llm?.provider
+            ? `LLM: ${health.llm.provider} / ${health.llm.model} (${health.llm.enabled ? 'enabled' : 'disabled'})`
+            : health.llm?.model
+              ? `LLM: ${health.llm.model}`
+              : null,
+          health.ocr_engine ? `OCR engine: ${health.ocr_engine}` : null,
+          health.catalog
+            ? `Catalog: v${shortVersion(health.catalog?.version)} · ${health.catalog?.field_count ?? '?'} fields`
+            : null,
+        ]
+          .filter(Boolean)
+          .join('\n') || `Status: ${health.status ?? 'online'}`
       : state === 'offline'
-        ? 'Backend unreachable on :8000 — start the FastAPI server'
+        ? 'Backend unreachable — start the FastAPI server'
         : 'Connecting to backend…';
 
   const pillLabel =
     state === 'online'
-      ? `API Online · ${health?.llm?.model ?? 'LLM'} · ${health?.ocr_engine === 'mock' ? 'Mock OCR' : 'Azure DI'}`
+      ? `API Online · ${health?.llm?.model ?? 'Ready'} · ${health?.ocr_engine === 'mock' ? 'Mock OCR' : health?.ocr_engine ? 'Azure DI' : 'Active'}`
       : state === 'offline'
         ? 'API Offline'
         : 'Connecting…';

@@ -27,10 +27,10 @@ export interface HealthCatalog {
 }
 export interface HealthResponse {
   status: string;
-  service: string;
-  ocr_engine: 'azure_document_intelligence' | 'mock' | string;
-  llm: HealthLlm;
-  catalog: HealthCatalog;
+  service?: string;
+  ocr_engine?: 'azure_document_intelligence' | 'mock' | string;
+  llm?: HealthLlm;
+  catalog?: HealthCatalog;
 }
 
 // ---------- Catalog ----------
