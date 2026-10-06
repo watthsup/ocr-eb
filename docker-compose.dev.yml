@@ -1,0 +1,52 @@
+services:
+  claims-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: claims_eb_backend
+    restart: unless-stopped
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    env_file:
+      - .env
+    environment:
+      - APP_ENV=development
+      - PYTHONUNBUFFERED=1
+    expose:
+      - "8000"
+    volumes:
+      - ./app:/app/app
+      - ./example_data:/app/example_data
+      - ./.cache/ocr:/app/.cache/ocr
+      - ./outputs:/app/outputs
+    networks:
+      - ocr-poc
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+
+  claims-frontend:
+    image: node:20-alpine
+    container_name: claims_eb_frontend
+    restart: unless-stopped
+    working_dir: /app
+    environment:
+      - VITE_BACKEND_URL=http://claims_eb_backend:8000
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0 --port 80"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    expose:
+      - "80"
+    networks:
+      - ocr-poc
+    depends_on:
+      claims-backend:
+        condition: service_healthy
+
+networks:
+  ocr-poc:
+    name: ocr-poc
+    external: true

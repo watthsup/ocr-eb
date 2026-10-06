@@ -1,0 +1,106 @@
+No,Doc Group,Field Code,Field Name (EN),ชื่อฟิลด์ (TH),Other keyword,Source Document,Granularity / Repeat,Type,Example,Allowed Values / Validation
+1,Claim History,CLM_PERIOD_NO,Policy Year Index,ปีที่ของข้อมูลเคลม,,Claim report,1 per policy year,Number,1,
+2,Claim History,CLM_START,Claim Start Date,วันเริ่มงวดเคลม,วันที่เริ่มคุ้มครอง; Policy period from; ระยะเวลาเอาประกัน,Claim report,per policy year,Date,01/01/2026,DD/MM/YYYY (AD)
+3,Claim History,CLM_END+C4:F13,Claim End Date,วันสิ้นงวดเคลม,วันที่สิ้นสุดคุ้มครอง; Policy period to,Claim report,per policy year,Date,31/12/2026,DD/MM/YYYY(AD) and >
+4,Claim History,CLM_CENSUS_START,Number of census at starting,จำนวนสมาชิกต้นงวด,,Claim cover,per policy year,Number,200,> 0
+5,Claim History,CLM_CENSUS_CURRE,Number of census at current,จำนวนสมาชิกปัจจุบัน,,Claim cover,per policy year,Number,195,> 0
+6,Claim History,CLM_AMT_IPD,Claim amount - IPD,ยอดเคลม IPD,,Claim report,per policy year,Number,1000,THB ≥ 0
+7,Claim History,CLM_AMT_OPD,Claim amount - OPD,ยอดเคลม OPD,,Claim report,per policy year,Number,1000,THB ≥ 0
+8,Claim History,CLM_AMT_OPDL_LE10,Claim amount - OPD Lump Sum,"ยอดเคลม OPDL (ทุน ≤ 10,000)",,Claim report,per policy year,Number,1000,THB ≥ 0
+9,Claim History,CLM_AMT_OPDL_GT10,Claim amount - OPD Lump Sum,"ยอดเคลม OPDL (ทุน > 10,000)",,Claim report,per policy year,Number,1000,THB ≥ 0
+10,Claim History,CLM_AMT_HI,Claim amount - HI,ยอดเคลม HI (ชดเชยรายวัน),,Claim report,per policy year,Number,1000,THB ≥ 0
+11,Claim History,CLM_AMT_DEN,Claim amount - Dental,ยอดเคลมทันตกรรม,,Claim report,per policy year,Number,1000,THB ≥ 0
+12,Claim History,CLM_AMT_DEN_OPDL_LE10K,Claim amount - Dental w/ OPDL (SI ≤ 10K),"ยอดเคลมทันตกรรมรวม OPDL (ทุน ≤ 10,000)",,Claim report,per policy year,Number,1000,THB ≥ 0
+13,Claim History,CLM_AMT_DEN_OPDL_GT10K,Claim amount - Dental w/ OPDL (SI > 10K),"ยอดเคลมทันตกรรมรวม OPDL (ทุน > 10,000)",,Claim report,per policy year,Number,1000,THB ≥ 0
+14,Claim History,CLM_AMT_ME,Claim amount - ME (Accident),ยอดเคลมค่ารักษาจากอุบัติเหตุ,,Claim report,per policy year,Number,1000,THB ≥ 0
+15,Claim History,CLM_AMT_SMM,Claim amount - SMM / Major,ยอดเคลม SMM,,Claim report,per policy year,Number,1000,THB ≥ 0
+16,Claim History,CLM_AMT_LAB,Claim amount - X-Ray & Lab,ยอดเคลม X-Ray/Lab,,Claim report,per policy year,Number,1000,THB ≥ 0
+17,Claim History,CLM_AMT_PRE,Claim amount -,ยอดเคลมก่อนเข้ารักษา,,Claim report,per policy year,Number,1000,THB ≥ 0
+18,Claim History,CLM_AMT_POST,Claim amount -,ยอดเคลมหลังออกจากรักษา,,Claim report,per policy year,Number,1000,THB ≥ 0
+19,Claim History,CLM_AMT_MAT,Claim amount - Maternity,ยอดเคลมคลอดบุตร,,Claim report,per policy year,Number,1000,THB ≥ 0
+20,Claim History,CLM_AMT_VISION,Claim amount - Vision,ยอดเคลมสายตา,,Claim report,per policy year,Number,0,THB ≥ 0
+21,Claim History,CLM_AMT_LIFE,Claim amount - Life,ยอดเคลมชีวิต,,Claim report,per policy year,Number,0,THB ≥ 0
+22,Claim History,CLM_AMT_ADD,Claim amount - ADD,ยอดเคลมอุบัติเหตุ (เสียชีวิต/สูญ,"AD&D; อบ. 1, อบ.2",Claim report,per policy year,Number,0,THB ≥ 0
+23,Claim History,CLM_AMT_TPD,Claim amount - TPD,ยอดเคลมทุพพลภาพ,TPD; ทุพพลภาพสิ้นเชิง,Claim report,per policy year,Number,0,THB ≥ 0
+24,Claim History,CLM_AMT_CI,Claim amount - CI,ยอดเคลมโรคร้ายแรง,CI; Dread Disease; DD,Claim report,per policy year,Number,0,THB ≥ 0
+25,Claim History,CLM_AMT_TOTAL,Total claim amount,ยอดเคลมรวม,รวม; Grand Total — ใช้ยอดที่พิมพ์ ไม่คำนวณเอง,Claim report,per policy year,Number,12000,THB ≥ 0
+26,Claim History,CLM_CNT_<BEN>,Claim count - per benefit,จำนวนครั้งเคลมแยกผลประโยชน์,,Claim report,per policy year,Number,35,> 0
+27,Claim History,CLM_CLAIMANT_CNT,Number of claimants,จำนวนผู้เคลม,,Claim report,per policy year,Number,120,> 0
+28,Claim History,CLM_HOSPITAL_1,No.1 Claim paid by hospital,โรงพยาบาลที่จ่ายเคลมสูงสุด,Provider Name; สถานพยาบาล; ชื่อโรงพยาบาล; Top 1 hospital by paid amount; โรงพยาบาลที่จ่ายเคลมสูงสุด อันดับ 1,Claim report,per policy year,Text,โรงพยาบาลกรุงเทพ,
+29,Claim History,CLM_HOSPITAL_2,No.2 Claim paid by hospital,โรงพยาบาลที่จ่ายเคลมสูงสุด อันดับ 2,Provider Name; สถานพยาบาล; ชื่อโรงพยาบาล,Claim report,per policy year,Text,โรงพยาบาลบำรุงราษฎร์,
+30,Claim History,CLM_HOSPITAL_3,No.3 Claim paid by hospital,โรงพยาบาลที่จ่ายเคลมสูงสุด,Provider Name; สถาน,Claim report,per policy year,Text,โรงพยาบาลสมิติเวช,
+31,Claim History,CLM_HOSPITAL_1_AMT,No.1 Claim paid by hospital -,ยอดเคลมของโรงพยาบาลอันดับ,,Claim report,per policy year,Number,850000,THB ≥ 0
+32,Claim History,CLM_HOSPITAL_2_AMT,No.2 Claim paid by hospital -,ยอดเคลมของโรงพยาบาลอันดับ,,Claim report,per policy year,Number,420000,THB ≥ 0
+33,Claim History,CLM_HOSPITAL_3_AMT,No.3 Claim paid by hospital -,ยอดเคลมของโรงพยาบาลอันดับ,,Claim report,per policy year,Number,310000,THB ≥ 0
+34,Claim History,ICD10_1,No.1 Claim paid by ICD10,รหัสโรค ICD-10 ที่จ่ายเคลมสูง,ICD-10; Diagnosis code;,Claim report,per policy year,Text,C50,
+35,Claim History,ICD10_2,No.2 Claim paid by ICD10,รหัสโรค ICD-10 ที่จ่ายเคลมสูง,ICD-10; Diagnosis code;,Claim report,per policy year,Text,I10,
+36,Claim History,ICD10_3,No.3 Claim paid by ICD10,รหัสโรค ICD-10 ที่จ่ายเคลมสูง,ICD-10; Diagnosis code;,Claim report,per policy year,Text,K35,
+37,Claim History,DESCRIPTION_1,No.1 Claim paid by Description,ชื่อโรค/การรักษา ที่จ่ายเคลมสูง,Diagnosis; ชื่อโรค; การริ,Claim report,per policy year,Text,มะเร็งเต้านม,
+38,Claim History,DESCRIPTION_2,No.2 Claim paid by Description,ชื่อโรค/การรักษา ที่จ่ายเคลมสูง,Diagnosis; ชื่อโรค; การริ,Claim report,per policy year,Text,ความดันโลหิตสูง,
+39,Claim History,DESCRIPTION_3,No.3 Claim paid by Description,ชื่อโรค/การรักษา ที่จ่ายเคลมสูง,Diagnosis; ชื่อโรค; การริ,Claim report,per policy year,Text,ไส้ติ่งอักเสบ,
+40,Claim History,CANCER_COUNT,Number of Cancer Claim,จำนวนเคลมโรคมะเร็ง/เนื้อ,Cancer; Neoplasm; โรค,Claim report,per policy year,Number,3,> 0 Count all
+41,Existing Benefit,PLAN_NO,Plan Number,แผนที่,,Benefit schedule,per plan,Text,1,1..N
+42,Existing Benefit,PLAN_LABEL,Plan Label as stated,ชื่อแผนตามเอกสาร,หลักเกณฑ์การแบ่งแผนประกัน (แผนที่ 1 = Sr. M & below); การแบ่งประเภทและแผนการประกันภัย (พนักงาน → แผน 001),Benefit schedule,per plan,Text,Plan A / ระดับผู้บริหาร,
+43,Existing Benefit,PLAN_MEMBER_CNT,Number of members in plan,จำนวนสมาชิกในแผน,,Census file,per plan,Number,120,> 0
+44,Existing Benefit,BEN_GTL,Life Insurance (all causes),ประกันชีวิต (คุ้มครองทุกกรณี),Group Life; วงเงินประกันชีวิตกลุ่ม; GL; ทุนประกัน; วงเงินประกันชีวิต; เสียชีวิตในทุกกรณี,Benefit schedule,per plan,Number,3500000,THB ≥ 0
+45,Existing Benefit,BEN_GTL_MULT,Life Insurance (all causes) - Multiple of salary,ประกันชีวิต (คุ้มครองทุกกรณี) ตามจำนวนเท่าเงินเดือน,เท่าของเงินเดือน; x เงินเดือน; multiple of salary,Benefit schedule,per plan,Number,24,> 0
+46,Existing Benefit,BEN_GADD,Accident Death & Dismemberment,อุบัติเหตุ เสียชีวิต/สูญเสียอวัยวะ,"AD&D; ADB; อบ 1, อบ 2; การเสียชีวิต สูญเสียอวัยวะ สายตา; Accidental Death; วงเงินประกันอุบัติเหตุ; เสียชีวิตจากอุบัติเหตุ (รับรวมกับประกันชีวิต) = headline ADD",Benefit schedule,per plan,Number,3500000,THB ≥ 0
+47,Existing Benefit,BEN_GADD_MULT,Accident Death & Dismemberment - Multiple of,อุบัติเหตุ เสียชีวิต/สูญเสียอวัยวะ ตามจำนวนเท่าเงินเดือน,เท่าของเงินเดือน; x เงินเดือน; multiple of salary,Benefit schedule,per plan,Number,24,> 0
+48,Existing Benefit,BEN_GADD_SCALE,ADD Condition / Scale,เงื่อนไข ADD,Long scale; Short scale; แบบคอนติเนนตัล; อบ.1 = short scale; อบ.2 = long scale; ขยายความคุ้มครอง; ขยายความคุ้มครองถึงการถูกฆาตกรรมหรือลอบทำร้าย; รายการสูญเสียอวัยวะแบบยาวเป็นส่วนประกอบของ ADD,Benefit,per plan,Text,,
+49,Existing Benefit,BEN_GTPD,Total Permanent Disability,ทุพพลภาพสิ้นเชิงถาวร,TPD; ทุพพลภาพสิ้นเชิงถาวร; PTD; Permanent; วงเงินประกันทุพพลภาพสิ้นเชิงถาวร; การประกันทุพพลภาพถาวรสิ้นเชิง,Benefit schedule,per plan,Number,3500000,THB ≥ 0
+50,Existing Benefit,BEN_GTPD_MULT,Total Permanent Disability -,ทุพพลภาพสิ้นเชิงถาวร ตาม,เท่าของเงินเดือน; x เงิน,Benefit,per plan,Number,24,> 0
+51,Existing Benefit,BEN_GCI,Critical Illness,โรคร้ายแรง,CI; โรคร้ายแรง; Dread,Benefit,per plan,Number,0,THB ≥ 0
+52,Existing Benefit,BEN_GPA,Personal Accident (PA),อุบัติเหตุส่วนบุคคล,PA; อุบัติเหตุส่วนบุคคล,Benefit,per plan,Number,0,THB ≥ 0
+53,Existing Benefit,BEN_GME,Medical Expense (Accident),ค่ารักษาพยาบาลจากอุบัติเหตุ,ME; ค่ารักษาพยาบาลเนื่องจากอุบัติเหตุ; อบ 1 ค่า,Benefit schedule,per plan,Number,0,THB ≥ 0
+54,Existing Benefit,BEN_HS_DEATH,Death Benefit (all causes) -,ผลประโยชน์เสียชีวิต (ในกลุ่ม,ค่าชดเชยกรณีเสียชีวิตในโรงพยาบาล,Benefit,per plan,Number,40000,THB ≥ 0
+55,Existing Benefit,BEN_IPD_RB,Room & Board per day,ค่าห้องและค่าอาหาร/วัน,R&B; ค่าห้อง ค่าอาหาร ค่าบริการพยาบาล; Room;,Benefit schedule,per plan,Number,4000,THB ≥ 0
+56,Existing Benefit,BEN_IPD_RB_DAYS,Room & Board - Max days,จำนวนวันสูงสุด (ค่าห้อง),(สูงสุด N วัน) ที่พิมพ์ต่อจากค่าห้องและค่าอาหาร; max N days; (ÇOR 70 Tu); ÇOR 70; 70 Tu; สูงสุด 70 วัน; 70 วัน,Benefit,per plan,Number,365,1-365 or UNLIMITED
+57,Existing Benefit,BEN_IPD_ICU,I.C.U. Room & Board per day,ค่าห้องพักผู้ป่วยหนัก/วัน (ไอ.ซี.ยู),ICU; ค่าห้องพักผู้ป่วยหนัก; ไอ.ซี.; I.C.U.; ห้องผู้ป่วยหนัก; ห้อง ICU; ไอ.ซี.ยู; ค่าห้องพักผู้ป่วยหนัก (ไอ.ซี.),Benefit schedule,per plan,Number,5000,THB ≥ 0
+58,Existing Benefit,BEN_IPD_ICU_DAYS,I.C.U. Room & Board - Max days,จำนวนวันสูงสุด (ค่าห้องพักผู้ป่วยหนัก/ICU),(สูงสุด N วัน) ที่พิมพ์ต่อจากค่าห้องพักผู้ป่วยหนัก/ไอ.ซี.; สูงสุด N วัน (ไอ.ซี.); สูงสุด N วัน (ICU); ICU max days; สูงสุด 20 วัน; 20 วัน,Benefit schedule,per plan,Number,20,1-365 or UNLIMITED
+59,Existing Benefit,BEN_IPD_OHS,Other Hospital Services (max/disability),ค่ารักษาพยาบาลอื่นๆ (ต่อการเจ็บป่วย),OHS; ค่ารักษาพยาบาลอื่นๆ; Hospital Miscellaneous,Benefit schedule,per plan,Number,40000,THB ≥ 0
+60,Existing Benefit,BEN_IPD_SURG,Surgical Benefit (max/disability),ค่าผ่าตัด (ต่อการเจ็บป่วย),ค่าผ่าตัด; Surgeon Fee; ค่าธรรมเนียมแพทย์ผ่าตัด;,Benefit schedule,per plan,Number,50000,THB ≥ 0
+61,Existing Benefit,BEN_IPD_DR_VISIT,In-Hospital Doctor's Visit per day,ค่าแพทย์เยี่ยมไข้/วัน,ค่าแพทย์เยี่ยมไข้; Doctor Visit; DV; ค่าดูแลโดย,Benefit schedule,per plan,Number,2000,THB ≥ 0
+62,Existing Benefit,BEN_IPD_DR_DAYS,Doctor's Visit - Max days,จำนวนวันสูงสุด (แพทย์เยี่ยมไข้),(สูงสุด N วัน/ครั้ง) ที่พิมพ์ต่อจากค่าแพทย์เยี่ยมไข้/ค่าดูแลโดยแพทย์; (สูงสุด N วัน); (สูงสุด N ครั้ง); ค่าดูแลโดยแพทย์ต่อครั้ง (สูงสุด 70 ครั้ง); 70 ครั้ง; 70 วัน; 64ER 70; 70,Benefit,per plan,Number,365,1-365 or UNLIMITED
+63,Existing Benefit,BEN_IPD_ER,Emergency OPD Treatment,ค่ารักษาฉุกเฉินผู้ป่วยนอก,Emergency OPD; ER; ค่า,Benefit,per plan,Number,6000,THB ≥ 0
+64,Existing Benefit,BEN_IPD_ER_EXCL_OHS,Emergency OPD Treatment (Accident) - Exclude Other,ค่ารักษาฉุกเฉินผู้ป่วยนอก - ไม่รวมอยู่ใน Other (จ่ายแยกต่าง,ไม่รวมอยู่ใน Other; จ่ายแยกต่างหาก; นอกเหนือวง; จ่ายแยกต่างหากจากข้อ 2; ไม่รวมอยู่ใน ข.,Benefit schedule,per plan,Flag,Y,Y|N
+65,Existing Benefit,BEN_IPD_ER_HOURS,Emergency Hour,จำนวนชั่วโมงหลังเกิดอุบัติเหตุที่,ภายใน 24 ชั่วโมง; within; เข้ารักษาภายใน N ชั่วโมงนับจากเกิดอุบัติเหตุ,Benefit,per plan,Number,24,Integer
+66,Existing Benefit,BEN_IPD_ER_FOLLOWUP_DAYS,Emergency Follow-up Treatment within Day,จำนวนวันที่คุ้มครองการรักษาต่อเนื่อง,รักษาต่อเนื่อง; follow-up; จนกว่าจะหาย; รวมการรักษาต่อเนื่องภายใน N วัน นับจากวันที่ได้รับบาดเจ็บ,Benefit schedule,per plan,Number,31,0-365 or Unlimited
+67,Existing Benefit,BEN_IPD_SPEC,Specialists' Consultation Fee,ค่าปรึกษาแพทย์ผู้เชี่ยวชาญ,ค่าปรึกษาแพทย์ผู้เชี่ยว,Benefit,per plan,Number,5000,THB ≥ 0
+68,Existing Benefit,BEN_IPD_SPEC_EXCL_OHS,Specialists' Consultation Fee - Exclude Other Hospital Services,ค่าปรึกษาแพทย์ผู้เชี่ยวชาญ - ไม่รวมอยู่ใน Other (จ่ายแยกต่าง,ไม่รวมอยู่ใน Other; จ่ายแยกต่างหาก; จ่ายแยกต่างหากจากข้อ 2 หรือข้อ 3; ไม่รวมอยู่ใน ข หรือ ค,Benefit schedule,per plan,Flag,Y,Y|N
+69,Existing Benefit,BEN_SMM,Major Medical (SMM),ค่ารักษาส่วนเกิน (SMM),SMM; Major Medical; เมเจอร์เมด; ค่ารักษาพยาบาลส่วนเกิน; Supplementary; ค่ารักษาพยาบาลเพิ่มพิเศษ; ค่ารักษาในโรงพยาบาลและศัลยกรรมเพิ่มพิเศษ/เพิ่มทวี; ค่ารักษาพยาบาลที่มีค่าใช้จ่ายสูง; ผลประโยชน์สูงสุดต่อการเจ็บป่วยหนึ่งครั้ง (ในหมวดค่ารักษาส่วนเกิน); Extra Major Medical; ผลประโยชน์สูงสุดต่อการเข้ารักษาในโรงพยาบาลต่อครั้ง (ในหมวดค่ารักษาที่มีค่าใช้จ่ายสูง); ผลประโยชน์สูงสุดต่อการเข้ารักษาในโรงพยาบาลต่อครั้ง,Benefit schedule,per plan,Number,0,THB ≥ 0
+70,Existing Benefit,BEN_SMM_COINS,SMM Co-insurance,สัดส่วนร่วมจ่าย SMM,Co-insurance; ร่วมจ่าย; อัตราการประกันภัยร่วม; อัตราส่วนร่วม 80:20; คุ้มครอง 80% ในส่วนที่เกิน; คุ้มครองค่ารักษาพยาบาล 8% ในส่วนที่เก็บกว่าผลประโยชน์; คุ้มครองค่ารักษาพยาบาล 80% ในส่วนที่เกินกว่าผลประโยชน์; คุ้มครองค่ารักษาพยาบาล 50% (OCR noise ของ 80%); 80/20,Benefit,per plan,Text,80/20,100/0 | 90/10 | 80/20 | 70/30
+71,Existing Benefit,BEN_COPAY_IPD,IPD Copay,สัดส่วนร่วมจ่าย IPD,IPD Copay; ร่วมจ่ายผู้ป่วย,Benefit,per plan,Text,80/20,100/0 | 90/10 | 80/20 | 70/30
+72,Existing Benefit,BEN_COPAY_OPD,OPD Copay,สัดส่วนร่วมจ่าย OPD,OPD Copay; ร่วมจ่ายผู้,Benefit,per plan,Text,90/10,100/0 | 90/10 | 80/20 | 70/30
+73,Existing Benefit,BEN_COPAY_DEN,Dental Copay,สัดส่วนร่วมจ่ายทันตกรรม,Dental Copay; ร่วมจ่าย,Benefit,per plan,Text,80/20,100/0 | 90/10 | 80/20 | 70/30
+74,Existing Benefit,BEN_PRE_HOS,Pre-Hospitalisation OPD (max/disability),ผู้ป่วยนอกก่อนเข้ารักษา,Pre-Hos; ค่ารักษาผู้ป่วยนอกก่อนเข้ารักษาตัว; Pre-,Benefit schedule,per plan,Number,0,THB ≥ 0
+75,Existing Benefit,BEN_POST_HOS,Post-Hospitalisation OPD (max/disability),ผู้ป่วยนอกหลังออกจากรักษา,Post-Hos; ค่ารักษาผู้ป่วยนอกหลังออกจากโรง,Benefit schedule,per plan,Number,0,THB ≥ 0
+76,Existing Benefit,BEN_LAB,X-Ray & Lab Test,ค่าเอกซเรย์และตรวจแล็บ,LAB; ค่าเอกซเรย์และตรวจทางห้องปฏิบัติการ;,Benefit schedule,per plan,Number,1700,THB ≥ 0
+77,Existing Benefit,BEN_MAT_NORMAL,Maternity - Normal delivery,คลอดปกติ (ต่อปี),MAT; ค่าคลอดบุตร; Maternity Benefit; การคลอดบุตร; ค่าห้องและค่าอาหารต่อวัน (ภายใต้ข้อกำหนดการประกันสุขภาพ); ค่าห้องและค่าอาหารต่อวัน (ข้อกำหนด),Benefit schedule,per plan,Number,0,THB ≥ 0
+78,Existing Benefit,BEN_MAT_CS,Maternity - Caesarean,ผ่าคลอด (ต่อปี),ผ่าคลอด; C-section;,Benefit,per plan,Number,0,THB ≥ 0
+79,Existing Benefit,BEN_MAT_MISCARRIAGE,Maternity - Miscarriage,แท้งบุตร (ต่อปี),แท้งบุตร; Miscarriage;,Benefit,per plan,Number,0,THB ≥ 0
+80,Existing Benefit,BEN_OPD_VISIT,OPD per visit,ผู้ป่วยนอก ต่อครั้ง,ผู้ป่วยนอก; OPD; ค่ารักษาพยาบาลผู้ป่วยนอกต่อครั้ง;; ค่าตรวจรักษาแบบผู้ป่วยนอก; ค่ารักษาพยาบาลผู้ป่วยนอก ต่อครั้ง; OPD per visit,Benefit schedule,per plan,Number,2500,THB ≥ 0
+81,Existing Benefit,BEN_OPD_VISITS_MAX,OPD - Max visits per year,จำนวนครั้งสูงสุด/ปี,(N ครั้ง/ปีกรมธรรม์) หรือ (สูงสุด N ครั้ง) ที่พิมพ์ต่อจากค่ารักษาผู้ป่วยนอก; 1 ครั้ง/วัน 30 ครั้ง/ปี,Benefit,per plan,Number,30,Integer or UNLIMITED
+82,Existing Benefit,BEN_OPDL,OPD Lump Sum (max/year),ผู้ป่วยนอกเหมาจ่าย (ต่อปี),OPDL; ผู้ป่วยนอกเหมาจ่าย; OPD วงเงินรวมต่อปี; การประกันสุขภาพแบบผู้ป่วยนอก สูงสุดไม่เกินปีละ; OPD เหมาจ่ายต่อปี; การประกันสุขภาพแบบผู้ป่วยนอก; สูงสุดไม่เกินปีละ (ผู้ป่วยนอก); วงเงินผู้ป่วยนอกต่อปี,Benefit schedule,per plan,Number,0,THB ≥ 0
+83,Existing Benefit,BEN_IPD_LUMPSUM,IPD Lump Sum (max/year),ผู้ป่วยในเหมาจ่าย (ต่อปี),IPD Lumpsum; เหมาจ่ายผู้ป่วยใน; IPD Annual Limit; เหมาจ่ายต่อปี; วงเงินต่อปีกรมธรรม์ (ผู้ป่วยใน) — ไม่ใช่วงเงินต่อครั้งของหมวดค่ารักษาส่วนเกิน,Benefit schedule,per plan,Number,500000,THB ≥ 0
+84,Existing Benefit,BEN_HI,HI Benefit per day,ชดเชยรายได้รายวัน,HI; ชดเชยรายได้; Hospital Income; เงินชดเชยรายวัน;; ค่ารักษาพยาบาลรายวันเพิ่มเติม (สำหรับการใช้สิทธิจากสวัสดิการอื่น); ขยายความคุ้มครองผลประโยชน์ค่ารักษาพยาบาลรายวัน,Benefit schedule,per plan,Number,0,THB ≥ 0
+85,Existing Benefit,BEN_HI_DAYS,HI - Max days,จำนวนวันสูงสุด (HI),,Benefit,per plan,Number,365,1-365 or UNLIMITED
+86,Existing Benefit,BEN_DEN,"Dental (lump sum, max/year)",ทันตกรรม (เหมาจ่ายต่อปี),DEN; ทันตกรรม; Dental; ทันตกรรม (ต่อปี); ถอนฟัน อุดฟัน ขูดหินปูน รักษารากฟัน สูงสุดไม่เกินปีละ,Benefit,per plan,Number,4000,THB ≥ 0
+87,Existing Benefit,BEN_DEN_EXAM_SCALING,Dental - Oral Examination or Scaling (max per visit),ตรวจฟัน / ขูดหินปูน (ต่อครั้ง),ขูดหินปูน; ตรวจฟัน; Scaling; Oral,Benefit schedule,per plan,Number,1000,THB ≥ 0
+88,Existing Benefit,BEN_DEN_EXAM_VISIT,Dental - Oral Examination or Scaling (max visits per year),จำนวนครั้งสูงสุด/ปี (ตรวจฟัน/ขูดหินปูน),2 ครั้งต่อปี; 2 visits per year,Benefit schedule,per plan,Number,2,> 0
+89,Existing Benefit,BEN_DEN_LAB,Dental - X-Ray & Lab Test (max,ค่าเอกซเรย์และแล็บทางทันต,Dental X-Ray; เอกซเรย์,Benefit,per plan,Number,2000,THB ≥ 0
+90,Existing Benefit,BEN_DEN_FILL_EXT,Dental - Filling & Extraction (max,ค่าอุดฟันและถอนฟัน (ต่อปี),อุดฟัน; ถอนฟัน; Filling;,Benefit,per plan,Number,3000,THB ≥ 0
+91,Existing Benefit,BEN_VISION,Vision Benefit (max/year),ผลประโยชน์สายตา (ต่อปี),VIS; ค่าตัดแว่น; Optical;,Benefit,per plan,Number,0,THB ≥ 0
+92,Existing Benefit,BEN_EXTRA_LIST,Non-standard / add-on benefits,"ผลประโยชน์นอกมาตรฐาน (เช่น วัคซีน, Health check-up, Telemedicine, Mental Health,",วัคซีน; ตรวจสุขภาพ; Telemedicine; Mental Health; Acupuncture; Chiropractic,Benefit schedule / email,"per plan, multi-row",Text,"วัคซีนไข้หวัดใหญ่ 1,000/ปี",
+93,Existing Benefit,BEN_FLAG_CUR_NEW,Current or Requested (New),เป็นผลประโยชน์เดิมหรือที่ลูกค้า,,Benefit,per benefit row,Enum,Current,Current | New (Requested)
+94,Existing Benefit,FCL_MAX,Maximum FCL,ทุนสูงสุดที่ไม่ต้องตรวจสุขภาพ,"FCL; Free Cover Limit; ทุนขั้นสูงที่ไม่ต้องตรวจ; จำนวนเงินเอาประกันภัยของพนักงานที่บริษัทสามารถรับประกันได้โดยไม่ต้องตรวจสุขภาพ (Free Cover Limit) ไม่เกิน; ใช้ค่าของประกันชีวิต (2,000,000) ไม่ใช่ของโรคร้ายแรง (150,000); Free Cover Limit ไม่เกิน (สำหรับประกันชีวิต)",Benefit schedule /,1 per case,Number,3500000,THB ≥ 0
+95,Census,CEN_MEMBER_ID,Member / Employee Reference,รหัสอ้างอิงสมาชิก,Employee Code; รหัสพนักงาน; Emp No; Staff ID; Member ID,Census file,per member,Text,EMP-0001,unique id
+96,Census,CEN_RELATION,Relation,ความสัมพันธ์,Employee; Spouse; Child; พนักงาน; คู่สมรส;,Census file,per member,Enum,E,E = Employee | S = Spouse | C = Child
+97,Census,CEN_SEX,Sex,เพศ,ชาย; หญิง; Male; Female,Census file,per member,Enum,F,F|M
+98,Census,CEN_DOB,Date of Birth,วันเดือนปีเกิด,วันเกิด; ว/ด/ป เกิด,Census file,per member,Date,15/03/1976,DD/MM/YYYY (AD)
+99,Census,CEN_AGE,Age,อายุ,,Census file (หรือ derive,per member,Number,50,> 0
+100,Census,CEN_PLAN,Plan,แผน,Plan; Class; แผนประกัน; Category,Census file,per member,Text,1,
+101,Census,CEN_POSITION,Position / Grade,ตำแหน่ง / ระดับ,Position; Level; Grade; Job Title; ตำแหน่ง; ระดับ,Census file,per member,Text,Manager,
+102,Census,CEN_SALARY,Monthly Salary,เงินเดือน,Salary; Monthly Salary; เงินเดือน,Census file,per member,Number,45000,THB ≥ 0
+103,Census,CEN_SA_MULTIPLE,Multiple of Salary,จำนวนเท่าของเงินเดือน,เท่าของเงินเดือน; x Salary; multiple,Benefit,per plan,Number,24,> 0
+104,Census,CEN_SA_FIXED,Sum Assured (fixed),ทุนประกันระบุเป็นจำนวนเงิน,Sum Insured (Life); Sum Assured; ทุนประกันชีวิต — ถ้ามีหลายคอลัมน์ (Life/Accident/TPD) ใช้คอลัมน์ Life,Census /,per plan,Number,1000000,THB ≥ 0
+105,Census,CEN_NO,Number of census,จำนวนสมาชิก,,Census file,1 per case,Number,50,> 0
