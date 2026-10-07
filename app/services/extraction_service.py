@@ -170,23 +170,11 @@ class ExtractionService:
                                         page_nos=sorted(page_nos), shared_page_nos=sorted(shared), plan_columns=list(cols)))
             return shards
 
-        # CLAIMS / CENSUS: sequential chunks under the token budget, header page carried over
+        # CLAIMS / CENSUS: process all relevant pages without token budget splitting
         ordered = sorted(relevant, key=lambda pt: pt.page)
-        header_page = next((pt.page for pt in ordered if pt.role in TABLE_ROLES), ordered[0].page)
-        chunks: List[List[int]] = [[]]
-        used = 0
-        for pt in ordered:
-            tok = by_no[pt.page].token_estimate
-            if chunks[-1] and used + tok > settings.SHARD_TOKEN_BUDGET and strategy != "single":
-                chunks.append([])
-                used = 0
-            chunks[-1].append(pt.page)
-            used += tok
-        shards = []
-        for i, chunk in enumerate(chunks, start=1):
-            shared = [header_page] if (i > 1 and header_page not in chunk) else []
-            shards.append(ShardSpec(shard_id=f"S{i}", label=f"pages {chunk[0]}–{chunk[-1]}", page_nos=chunk, shared_page_nos=shared))
-        return shards
+        page_nos = [pt.page for pt in ordered]
+        label = f"pages {page_nos[0]}–{page_nos[-1]}" if page_nos else "empty"
+        return [ShardSpec(shard_id="S1", label=label, page_nos=page_nos)]
 
     @staticmethod
     def _all_plan_columns(pts: List[PageTriage]) -> List[str]:

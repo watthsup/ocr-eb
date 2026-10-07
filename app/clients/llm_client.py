@@ -46,7 +46,7 @@ class LLMClient:
         return self._client
 
     def _params(self, reasoning_effort: Optional[str]) -> Dict[str, Any]:
-        params: Dict[str, Any] = {"max_completion_tokens": settings.LLM_MAX_OUTPUT_TOKENS}
+        params: Dict[str, Any] = {}
         if _is_reasoning_model(self.model):
             effort = reasoning_effort or settings.OPENAI_REASONING_EFFORT
             if effort:

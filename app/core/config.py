@@ -27,7 +27,6 @@ class Settings(BaseSettings):
     OPENAI_MODEL: str = "gpt-5.4-mini"
     OPENAI_TEMPERATURE: Optional[float] = None  # ignored for reasoning models (gpt-5*, o*)
     OPENAI_REASONING_EFFORT: Optional[str] = "low"  # minimal|low|medium|high (reasoning models only)
-    LLM_MAX_OUTPUT_TOKENS: int = 64000
     LLM_TIMEOUT_SECONDS: float = 300.0
 
     AZURE_FOUNDRY_ENDPOINT: Optional[str] = None
@@ -40,7 +39,6 @@ class Settings(BaseSettings):
 
     # 4. Extraction strategy
     SHARD_STRATEGY: Literal["auto", "single", "per_section"] = "auto"
-    SHARD_TOKEN_BUDGET: int = 24000  # approx. tokens of document context per LLM call before forcing a split
     SINGLE_SHARD_TOKEN_LIMIT: int = 6000  # below this a multi-section benefit table is still extracted in one call
     MAX_PARALLEL_SHARDS: int = 4
     CENSUS_TABULAR_MODE: bool = True  # header-mapping + pandas rows instead of LLM row extraction
