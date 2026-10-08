@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { AlertCircle, Braces, Download, FileStack, Grid3X3, Table2, X } from 'lucide-react';
+import { AlertCircle, Braces, Download, FileSpreadsheet, FileStack, Grid3X3, Table2, X } from 'lucide-react';
 import { errorMessage, exportUrl, getOcr, patchFields, type FieldOverride, type Job, type OcrResponse } from '../api/client';
 import FieldsView, { buildRows } from './FieldsView';
 import JsonView from './JsonView';
@@ -84,19 +84,32 @@ export default function ResultsDashboard({ job, onJobUpdate, onSelectPage, showS
       )}
 
       <div className="dash-toolbar">
-        <div className="tab-group" role="tablist" aria-label="Result views">
-          <button type="button" role="tab" aria-selected={tab === 'fields'} className={`tab-button ${tab === 'fields' ? 'active' : ''}`} onClick={() => setTab('fields')}>
-            <Table2 size={14} /> Fields <span className="tab-count">{rowCount.toLocaleString()}</span>
-          </button>
-          <button type="button" role="tab" aria-selected={tab === 'matrix'} className={`tab-button ${tab === 'matrix' ? 'active' : ''}`} onClick={() => setTab('matrix')}>
-            <Grid3X3 size={14} /> {matrixLabel} <span className="tab-count">{result.groups.length}</span>
-          </button>
-          <button type="button" role="tab" aria-selected={tab === 'pages'} className={`tab-button ${tab === 'pages' ? 'active' : ''}`} onClick={() => setTab('pages')}>
-            <FileStack size={14} /> Pages <span className="tab-count">{result.page_count}</span>
-          </button>
-          <button type="button" role="tab" aria-selected={tab === 'json'} className={`tab-button ${tab === 'json' ? 'active' : ''}`} onClick={() => setTab('json')}>
-            <Braces size={14} /> JSON
-          </button>
+        <div className="dash-toolbar-left">
+          <div className="tab-group" role="tablist" aria-label="Result views">
+            <button type="button" role="tab" aria-selected={tab === 'fields'} className={`tab-button ${tab === 'fields' ? 'active' : ''}`} onClick={() => setTab('fields')}>
+              <Table2 size={14} /> Fields <span className="tab-count">{rowCount.toLocaleString()}</span>
+            </button>
+            <button type="button" role="tab" aria-selected={tab === 'matrix'} className={`tab-button ${tab === 'matrix' ? 'active' : ''}`} onClick={() => setTab('matrix')}>
+              <Grid3X3 size={14} /> {matrixLabel} <span className="tab-count">{result.groups.length}</span>
+            </button>
+            <button type="button" role="tab" aria-selected={tab === 'pages'} className={`tab-button ${tab === 'pages' ? 'active' : ''}`} onClick={() => setTab('pages')}>
+              <FileStack size={14} /> Pages <span className="tab-count">{result.page_count}</span>
+            </button>
+            <button type="button" role="tab" aria-selected={tab === 'json'} className={`tab-button ${tab === 'json' ? 'active' : ''}`} onClick={() => setTab('json')}>
+              <Braces size={14} /> JSON
+            </button>
+          </div>
+
+          <a
+            className="btn-export-pulse"
+            href={exportUrl(job.job_id)}
+            download
+            title="Download the business review workbook (reflects your edits)"
+          >
+            <FileSpreadsheet size={15} className="export-pulse-icon" />
+            <span>Export Review Template</span>
+            <span className="export-pulse-badge">.xlsx</span>
+          </a>
         </div>
         <span className="small muted">Edit values inline in the Fields tab · changes are saved to the job and included in the export</span>
       </div>
