@@ -1,5 +1,5 @@
 from app.models.schemas import ExtractionOut, FieldValueOut, PageContent, PageTriage, RecordGroupOut, TriageResult
-from app.services.extraction_service import ExtractionService, compact_markdown, normalize_group_key
+from app.services.extraction_service import ExtractionService, normalize_group_key
 from app.services.triage_service import TriageService
 
 
@@ -67,13 +67,6 @@ def test_merge_records_shard_conflict_as_issue():
     assert any("shard conflict" in i for i in grp.fields[0].issues)
 
 
-def test_compact_markdown_replaces_html_tables():
-    p = PageContent(page_no=1, source_file="x", markdown="intro\n<table><tr><td>a</td><td>b</td></tr></table>\n<!-- PageBreak -->",
-                    tables=[[["a", "b"], ["1", "2"]]])
-    md = compact_markdown(p)
-    assert "<table>" not in md and "| a | b |" in md and "PageBreak" not in md
-
-
 def test_triage_repair_fills_missing_pages_and_continuation_parent():
     tri = TriageResult(document_type="BENEFIT_SCHEDULE", reasoning="t", pages=[
         PageTriage(page=1, role="BENEFIT_TABLE", is_relevant=True, plan_columns=["A", "B"]),
@@ -132,9 +125,6 @@ def test_ground_rows_copies_cells_by_plan_column():
                                                  values=[GroupValue(group_key="8", value=None), GroupValue(group_key="9", value="5000")])])  # model shifted
     assert ground_rows(out, [page], tri, {"BEN_DEN"}) == 1
     assert [(v.group_key, v.value) for v in out.rows[0].values] == [("8", "5,000"), ("9", "-")]
-    ctx_tables = ExtractionService(llm=object.__new__(type("L", (), {"enabled": False}))).build_context(
-        __import__("app.models.schemas", fromlist=["ShardSpec"]).ShardSpec(shard_id="S1", label="l", page_nos=[7]), [page], tri)
-    assert "[p7.t1.r1] ทันตกรรม (ต่อปี) | 5,000 | - |" in ctx_tables
     # a companion field whose values come from the label must NOT be grounded
     out.rows[0].field_code, out.rows[0].values = "BEN_IPD_RB_DAYS", [GroupValue(group_key="8", value="31"), GroupValue(group_key="9", value="31")]
     assert ground_rows(out, [page], tri, {"BEN_IPD_RB_DAYS"}) == 0

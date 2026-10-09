@@ -39,47 +39,19 @@ logger = logging.getLogger(__name__)
 PROMPT_BY_TYPE = {"BENEFIT_SCHEDULE": "benefit_schedule", "CLAIMS": "claims", "CENSUS": "census"}
 MATRIX_TYPES = {"BENEFIT_SCHEDULE", "CLAIMS"}  # table-shaped output: one row per field, one value per plan/period
 TABLE_ROLES = {"BENEFIT_TABLE", "BENEFIT_TABLE_CONTINUATION", "CLAIMS_SUMMARY_TABLE", "CLAIMS_DETAIL_TABLE", "CENSUS_TABLE"}
-HTML_TABLE_RE = re.compile(r"<table>.*?</table>", re.DOTALL | re.IGNORECASE)
-
-
-# ----------------------------------------------------------------------------
-# Context hydration helpers
-# ----------------------------------------------------------------------------
-def grid_to_pipe_table(grid: List[List[str]], tag_prefix: Optional[str] = None) -> str:
-    """Pipe table; with `tag_prefix` (e.g. 'p3.t1') every row is prefixed by a `[p3.t1.r5]` tag the model can reference."""
+def grid_to_pipe_table(grid: List[List[str]]) -> str:
+    """Render a 2D grid as a Markdown pipe table."""
     if not grid:
         return ""
     width = max(len(r) for r in grid)
     rows = [r + [""] * (width - len(r)) for r in grid]
 
-    def render(i: int, r: List[str]) -> str:
+    def render(r: List[str]) -> str:
         cells = [c.replace("|", "/") for c in r]
-        if tag_prefix:
-            cells[0] = f"[{tag_prefix}.r{i}] {cells[0]}"
         return "| " + " | ".join(cells) + " |"
 
-    lines = [render(0, rows[0]), "|" + "---|" * width] + [render(i, r) for i, r in enumerate(rows[1:], start=1)]
+    lines = [render(rows[0]), "|" + "---|" * width] + [render(r) for r in rows[1:]]
     return "\n".join(lines)
-
-
-def compact_markdown(page: PageContent, tag_rows: bool = False) -> str:
-    """Replace Azure DI's verbose HTML tables with pipe tables (≈40% fewer tokens), drop page-break comments."""
-    md = page.markdown
-    html_tables = HTML_TABLE_RE.findall(md)
-    if html_tables and len(html_tables) == len(page.tables):
-        for t, (html, grid) in enumerate(zip(html_tables, page.tables), start=1):
-            md = md.replace(html, grid_to_pipe_table(grid, f"p{page.page_no}.t{t}" if tag_rows else None), 1)
-    elif page.tables and tag_rows:
-        # spreadsheet pages (pandas markdown preview) or DI pages without HTML tables: render the grids themselves, tagged
-        heading = md.splitlines()[0] if md.startswith("#") else ""
-        rendered = []
-        for t, grid in enumerate(page.tables, start=1):
-            rendered.append(grid_to_pipe_table(grid[:400], f"p{page.page_no}.t{t}") + (f"\n... {len(grid) - 400} more rows omitted" if len(grid) > 400 else ""))
-        md = (heading + "\n\n" if heading else "") + "\n\n".join(rendered)
-    md = re.sub(r"<!--\s*PageBreak\s*-->", "", md)
-    md = re.sub(r"<!--\s*PageNumber=\"?[^>]*-->", "", md)
-    md = re.sub(r"\n{3,}", "\n\n", md)
-    return md.strip()
 
 
 ROW_TAG_RE = re.compile(r"p(\d+)\.t(\d+)\.r(\d+)")
@@ -239,11 +211,11 @@ class ExtractionService:
         for no in shard.shared_page_nos:
             if no in by_no:
                 pt = tri.get(no) or PageTriage(page=no, role="OTHER", is_relevant=True)
-                blocks.append(header(pt, shared=True) + "\n" + compact_markdown(by_no[no], tag_rows=True))
+                blocks.append(header(pt, shared=True) + "\n" + (by_no[no].markdown or "").strip())
         for no in shard.page_nos:
             if no in by_no:
                 pt = tri.get(no) or PageTriage(page=no, role="OTHER", is_relevant=True)
-                blocks.append(header(pt, shared=False) + "\n" + compact_markdown(by_no[no], tag_rows=True))
+                blocks.append(header(pt, shared=False) + "\n" + (by_no[no].markdown or "").strip())
         return "\n\n".join(blocks)
 
     def system_prompt(self, doc_type: str) -> str:
